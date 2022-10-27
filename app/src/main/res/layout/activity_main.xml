@@ -35,7 +35,7 @@
 
         android:ellipsize="end"
         android:singleLine="true"
-        android:text="Нетология. Меняем карьеру через образование"
+        android:text="@string/postTitle"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/datePostTv"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:text="Сегодня 10:00"
+        android:text="@string/datePost"
         app:layout_constraintBottom_toBottomOf="@id/avatarIv"
         app:layout_constraintStart_toEndOf="@id/avatarIv"
         app:layout_constraintTop_toBottomOf="@id/titleTv" />
@@ -63,17 +63,11 @@
 
     <TextView
         android:id="@+id/postTextTv"
+        android:autoLink="web"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:text="В комьюнити студентов и выпускников курса «Моушн-дизайнер в 2D и 3D» прошёл конкурс по созданию заставки для площадки курса на YouTube. Главная идея ― приблизить работу над роликом к условиям реальной работы в студии, чтобы у участников было понимание настоящего процесса. Конкурс проходил с сопровождением преподавателя курса Александром Рябцевым ― бродкаст-дизайнером телеканала ТВ-3. Ролики создавались в несколько этапов:
-\n
-\n· подбор референсов,
-\n· создание стилфрейма,
-\n· раскадровка будущего ролика и фотоматик,
-\n· создание анимации.
-\n\n
-После каждого этапа участники встречались с Александром, обсуждали работы и получали рекомендации для доработки. Студенты поделились готовыми видео. Рекомендуем открыть и посмотреть каждое. В финале Александр в качестве ролика-победителя выбрал работу Анастасии Крестиничевой. А участники комьюнити выбрали обладательницу приза зрительских симпатий ― ей стала Венера Емельянова."
+        android:text="@string/postText"
         app:layout_constraintTop_toBottomOf="@id/titleBarrier" />
 
     <androidx.constraintlayout.widget.Barrier
