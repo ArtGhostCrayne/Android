@@ -4,13 +4,13 @@ package ru.nmedia.dto
 data class Post(
     val id: Int,
     val title: String,
-    var date: String,
-    var content: String,
-    var likeCount: Int = 0,
-    var liked: Boolean = false,
-    var repostCount: Int = 0,
-    var commentCount: Int = 0,
-    var viewCount: Int = 0
+    val date: String,
+    val content: String,
+    val likeCount: Int = 0,
+    val liked: Boolean = false,
+    val repostCount: Int = 0,
+    val commentCount: Int = 0,
+    val viewCount: Int = 0
 )
 
 
