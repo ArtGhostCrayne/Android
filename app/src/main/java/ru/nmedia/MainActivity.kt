@@ -1,10 +1,11 @@
 package ru.nmedia
 
-import ru.nmedia.dto.Post
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.example.nmedia.R
 import com.example.nmedia.databinding.ActivityMainBinding
+import ru.nmedia.repository.PostViewModel
 import java.text.DecimalFormat
 
 
@@ -27,53 +28,44 @@ fun countToString(count: Int): String {
 }
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var binding: ActivityMainBinding
+    private val viewModel: PostViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityMainBinding.inflate(layoutInflater)
-//        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        subscribe()
+        setListeners()
+    }
 
-        val post = Post(
-            id = 1,
-            title = "Нетология. Меняем карьеру через образование",
-            date = "Сегодня 10:00",
-            commentCount = 120_500,
-            repostCount = 1090,
-            viewCount = 1_200_000,
-            content = "В комьюнити студентов и выпускников курса «Моушн-дизайнер в 2D и 3D» прошёл конкурс по созданию заставки для площадки курса на YouTube. Главная идея ― приблизить работу над роликом к условиям реальной работы в студии, чтобы у участников было понимание настоящего процесса. Конкурс проходил с сопровождением преподавателя курса Александром Рябцевым ― бродкаст-дизайнером телеканала ТВ-3. Ролики создавались в несколько этапов:    · подбор референсов,  · создание стилфрейма,  · раскадровка будущего ролика и фотоматик,  · создание анимации.    После каждого этапа участники встречались с Александром, обсуждали работы и получали рекомендации для доработки. Студенты поделились готовыми видео. Рекомендуем открыть и посмотреть каждое. В финале Александр в качестве ролика-победителя выбрал работу Анастасии Крестиничевой. А участники комьюнити выбрали обладательницу приза зрительских симпатий ― ей стала Венера Емельянова. http://netology.ru "
-        )
-
+    private fun setListeners() {
         with(binding) {
-            datePostTv.text = post.date
-            titleTv.text = post.title
-            postTextTv.text = post.content
-            likesTv.text = countToString(post.likeCount)
-            repostsTv.text = countToString(post.repostCount)
-            commentsTv.text = countToString(post.commentCount)
-            viewsTv.text = countToString(post.viewCount)
-            if (post.liked) binding.likesIv.setImageResource(R.drawable.i_liked)
-
+            binding.likesIv.setOnClickListener {
+                viewModel.like()
+            }
 
             repostIv.setOnClickListener {
-                post.repostCount += 1
-                repostsTv.text = countToString(post.repostCount)
+                viewModel.repost()
             }
+        }
+    }
 
-            likesIv.setOnClickListener {
-                post.liked = !post.liked
-
-                if (post.liked) {
-                    likesIv.setImageResource(R.drawable.i_liked)
-                    post.likeCount++
-                } else {
-                    likesIv.setImageResource(R.drawable.ic_baseline_heart_broken_24)
-                    post.likeCount--
-                }
+    private fun subscribe() {
+        viewModel.data.observe(this) { post ->
+            with(binding) {
+                datePostTv.text = post.date
+                titleTv.text = post.title
+                postTextTv.text = post.content
                 likesTv.text = countToString(post.likeCount)
-
+                repostsTv.text = countToString(post.repostCount)
+                commentsTv.text = countToString(post.commentCount)
+                viewsTv.text = countToString(post.viewCount)
+                if (post.liked) binding.likesIv.setImageResource(R.drawable.i_liked) else binding.likesIv.setImageResource(
+                    R.drawable.ic_baseline_heart_broken_24
+                )
             }
-
-
         }
     }
 }
