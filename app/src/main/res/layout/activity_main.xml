@@ -1,163 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     tools:context="ru.nmedia.MainActivity">
 
-
-    <ImageView
-        android:id="@+id/moreIv"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/ic_baseline_more_horiz_24"
-        app:layout_constraintBottom_toBottomOf="@id/avatarIv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/avatarIv" />
-
-    <ImageView
-        android:id="@+id/avatarIv"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher2_foreground"
-
-        />
-
-    <TextView
-        android:id="@+id/titleTv"
-        android:layout_width="0dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/post_layout">
 
-        android:ellipsize="end"
-        android:singleLine="true"
-        android:text="@string/postTitle"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/datePostTv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/avatarIv"
-        app:layout_constraintTop_toTopOf="@id/avatarIv"
-        app:layout_constraintVertical_chainStyle="packed" />
+        <!--        android:padding="16dp">-->
 
-    <TextView
-        android:id="@+id/datePostTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="@string/datePost"
-        app:layout_constraintBottom_toBottomOf="@id/avatarIv"
-        app:layout_constraintStart_toEndOf="@id/avatarIv"
-        app:layout_constraintTop_toBottomOf="@id/titleTv" />
+    </androidx.recyclerview.widget.RecyclerView>
 
 
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/titleBarrier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="titleTv,avatarIv,moreIv,datePostTv" />
-
-    <TextView
-        android:id="@+id/postTextTv"
-        android:autoLink="web"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:text="@string/postText"
-        app:layout_constraintTop_toBottomOf="@id/titleBarrier" />
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/postBarrier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:padding="16dp"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="postTextTv" />
-
-    <ImageView
-        android:id="@+id/likesIv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        app:layout_constraintTop_toBottomOf="@id/postBarrier"
-        app:srcCompat="@drawable/ic_baseline_heart_broken_24" />
-
-    <TextView
-        android:id="@+id/likesTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="100"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/likesIv"
-        app:layout_constraintStart_toEndOf="@+id/likesIv"
-        app:layout_constraintTop_toTopOf="@+id/likesIv" />
-
-    <ImageView
-        android:id="@+id/commentsIv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:padding="10dp"
-        app:layout_constraintBottom_toBottomOf="@id/likesIv"
-        app:layout_constraintStart_toEndOf="@id/likesTv"
-        app:layout_constraintTop_toTopOf="@id/likesIv"
-        app:srcCompat="@drawable/ic_baseline_comment_24" />
-
-    <TextView
-        android:id="@+id/commentsTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="20"
-        app:layout_constraintBottom_toBottomOf="@id/commentsIv"
-        app:layout_constraintStart_toEndOf="@id/commentsIv"
-        app:layout_constraintTop_toTopOf="@id/commentsIv" />
-
-
-    <ImageView
-        android:id="@+id/repostIv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:padding="10dp"
-        app:layout_constraintBottom_toBottomOf="@id/likesIv"
-        app:layout_constraintStart_toEndOf="@id/commentsTv"
-        app:layout_constraintTop_toTopOf="@id/likesIv"
-        app:srcCompat="@drawable/ic_baseline_reply_24" />
-
-    <TextView
-        android:id="@+id/repostsTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="23"
-        app:layout_constraintBottom_toBottomOf="@id/repostIv"
-        app:layout_constraintStart_toEndOf="@id/repostIv"
-        app:layout_constraintTop_toTopOf="@id/repostIv" />
-
-    <ImageView
-        android:id="@+id/viewsIv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:padding="10dp"
-        app:layout_constraintBottom_toBottomOf="@id/likesIv"
-        app:layout_constraintEnd_toStartOf="@id/viewsTv"
-        app:layout_constraintTop_toTopOf="@id/likesIv"
-        app:srcCompat="@drawable/ic_baseline_visibility_24" />
-
-    <TextView
-        android:id="@+id/viewsTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1000000"
-        app:layout_constraintBottom_toBottomOf="@+id/viewsIv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/viewsIv" />
-
-    />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

@@ -5,6 +5,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.nmedia.R
 import com.example.nmedia.databinding.ActivityMainBinding
+import com.example.nmedia.databinding.PostLayoutBinding
+import ru.nmedia.adapter.PostsAdapter
 import ru.nmedia.repository.PostViewModel
 import java.text.DecimalFormat
 
@@ -30,6 +32,9 @@ fun countToString(count: Int): String {
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
+//    lateinit var PostLayoutBinding: ActivityMainBinding
+
+
     private val viewModel: PostViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,35 +42,18 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         subscribe()
-        setListeners()
-    }
 
-    private fun setListeners() {
-        with(binding) {
-            binding.likesIv.setOnClickListener {
-                viewModel.like()
-            }
-
-            repostIv.setOnClickListener {
-                viewModel.repost()
-            }
-        }
     }
 
     private fun subscribe() {
-        viewModel.data.observe(this) { post ->
-            with(binding) {
-                datePostTv.text = post.date
-                titleTv.text = post.title
-                postTextTv.text = post.content
-                likesTv.text = countToString(post.likeCount)
-                repostsTv.text = countToString(post.repostCount)
-                commentsTv.text = countToString(post.commentCount)
-                viewsTv.text = countToString(post.viewCount)
-                if (post.liked) binding.likesIv.setImageResource(R.drawable.i_liked) else binding.likesIv.setImageResource(
-                    R.drawable.ic_baseline_heart_broken_24
-                )
-            }
+        val adapter = PostsAdapter(
+            {viewModel.likeById(it.id)},
+            {viewModel.repostById(it.id)}
+        )
+        binding.list.adapter = adapter
+        viewModel.data.observe(this){
+            posts -> adapter.submitList(posts)
         }
     }
 }
+
