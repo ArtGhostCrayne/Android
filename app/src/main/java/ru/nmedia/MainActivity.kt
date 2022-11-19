@@ -104,7 +104,12 @@ class MainActivity : AppCompatActivity() {
         val adapter = PostsAdapter(interactionListener)
         binding.list.adapter = adapter
         viewModel.data.observe(this) { posts ->
-            adapter.submitList(posts)
+            val newPost = posts.size > adapter.currentList.size
+            adapter.submitList(posts){
+                if (newPost){
+                    binding.list.smoothScrollToPosition(adapter.currentList.size)
+                }
+            }
 
         }
 

@@ -10,7 +10,6 @@ import com.example.nmedia.R
 import com.example.nmedia.databinding.PostLayoutBinding
 import ru.nmedia.countToString
 import ru.nmedia.dto.Post
-import ru.nmedia.repository.PostViewModel
 
 //typealias OnLikeListener = (post: Post) -> Unit
 //typealias OnRepostListener = (post: Post) -> Unit
@@ -32,15 +31,18 @@ class PostViewHolder(
             datePostTv.text = post.date
             titleTv.text = post.title
             postTextTv.text = post.content
-            likesTv.text = countToString(post.likeCount)
-            repostsTv.text = countToString(post.repostCount)
-            commentsTv.text = countToString(post.commentCount)
+//            likesTv.text = countToString(post.likeCount)
+            repostIv.text = countToString(post.repostCount)
+            commentsIv.text = countToString(post.commentCount)
             viewsTv.text = countToString(post.viewCount)
-            if (post.liked) likesIv.setImageResource(R.drawable.i_liked) else likesIv.setImageResource(
-                R.drawable.ic_baseline_heart_broken_24
-            )
+//            if (post.liked) likesIv.setImageResource(R.drawable.i_liked) else likesIv.setImageResource(
+//                R.drawable.ic_baseline_heart_broken_24
+//            )
+            likesMb.text = countToString(post.likeCount)
+            likesMb.isChecked = post.liked
 
-            likesIv.setOnClickListener {
+
+            likesMb.setOnClickListener {
                 onInteractionListener.onLike(post)
             }
 
