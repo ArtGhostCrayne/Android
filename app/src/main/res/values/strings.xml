@@ -10,4 +10,5 @@
     <string name="Apply">Apply</string>
     <string name="msg_empty_post_text">Content can`t be empty</string>
     <string name="edit_post_text">Edit post</string>
+    <string name="add_post">Add post</string>
 </resources>

@@ -15,6 +15,7 @@
     <!--        app:layout_constraintEnd_toEndOf="parent"-->
     <!--        app:layout_constraintTop_toTopOf="@id/avatarIv" />-->
 
+
     <Button
         android:id="@+id/postMenuIv"
         style="@style/AppTheme.MoreButton"
@@ -73,6 +74,34 @@
         app:barrierDirection="bottom"
         app:constraint_referenced_ids="titleTv,avatarIv,postMenuIv,datePostTv" />
 
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/groupVideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:constraint_referenced_ids="videoIv,videoPlayFab" />
+
+    <ImageView
+        android:id="@+id/videoIv"
+        android:layout_width="wrap_content"
+        android:layout_height="240dp"
+        android:layout_margin="8dp"
+        android:scaleType="fitStart"
+        app:layout_constraintTop_toBottomOf="@id/titleBarrier"
+        app:srcCompat="@drawable/video" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/videoPlayFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/videoIv"
+        app:layout_constraintEnd_toEndOf="@id/videoIv"
+        app:layout_constraintStart_toStartOf="@id/videoIv"
+        app:layout_constraintTop_toTopOf="@id/videoIv"
+        app:srcCompat="@drawable/i_play_arrow_24" />
+
+
     <TextView
         android:id="@+id/postTextTv"
         android:layout_width="wrap_content"
@@ -80,7 +109,7 @@
         android:autoLink="web"
         android:padding="16dp"
         android:text="@string/postText"
-        app:layout_constraintTop_toBottomOf="@id/titleBarrier" />
+        app:layout_constraintTop_toBottomOf="@id/videoIv" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/postBarrier"

@@ -10,7 +10,8 @@ data class Post(
     var liked: Boolean = false,
     val repostCount: Int = 0,
     val commentCount: Int = 0,
-    val viewCount: Int = 0
+    val viewCount: Int = 0,
+    val video: String = ""
 )
 
 

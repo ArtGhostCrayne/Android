@@ -11,4 +11,5 @@
     <string name="Apply">Применить</string>
     <string name="msg_empty_post_text">Текст поста не может быть пустым</string>
     <string name="edit_post_text">Редактирование поста</string>
+    <string name="add_post">Добавить пост</string>
 </resources>

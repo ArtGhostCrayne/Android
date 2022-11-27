@@ -1,14 +1,18 @@
 package ru.nmedia.adapter
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import androidx.core.content.ContextCompat.startActivity
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.nmedia.R
-import com.example.nmedia.databinding.PostLayoutBinding
-import ru.nmedia.countToString
+import ru.nmedia.R
+import ru.nmedia.databinding.PostLayoutBinding
+import ru.nmedia.activity.countToString
 import ru.nmedia.dto.Post
 
 //typealias OnLikeListener = (post: Post) -> Unit
@@ -41,6 +45,8 @@ class PostViewHolder(
             likesMb.text = countToString(post.likeCount)
             likesMb.isChecked = post.liked
 
+            groupVideo.isVisible= post.video.isNotBlank()
+
 
             likesMb.setOnClickListener {
                 onInteractionListener.onLike(post)
@@ -48,6 +54,17 @@ class PostViewHolder(
 
             repostIv.setOnClickListener {
                 onInteractionListener.onRepost(post)
+            }
+
+
+            videoPlayFab.setOnClickListener {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.video))
+                startActivity(it.context, intent,null)
+            }
+
+            videoIv.setOnClickListener {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.video))
+                startActivity(it.context, intent,null)
             }
 
 
