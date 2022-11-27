@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
                 type = "text/plain"
             }
 
-            var repostIntent = Intent.createChooser(intent, "Куда отправить")
+            val repostIntent = Intent.createChooser(intent, "Куда отправить")
 
             startActivity(repostIntent)
 
@@ -69,7 +69,14 @@ class MainActivity : AppCompatActivity() {
     val newPostLauncher = registerForActivityResult(PostResultContract()) { result ->
         result ?: return@registerForActivityResult
 //            Snackbar.make(binding.root, "", Snackbar.LENGTH_LONG).setAction(result) {}.show()
-        viewModel.add(result)
+        with(viewModel) {
+            if (edited.value?.id == 0L) {
+                add(result)
+            } else {
+                edit(viewModel.edited.value!!.copy(content = result))
+            }
+        }
+
     }
 
 
@@ -134,10 +141,8 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        viewModel.edited.observe(this){
-            post ->
-            if (post.id !=0L){
-
+        viewModel.edited.observe(this) { post ->
+            if (post.id != 0L) {
                 newPostLauncher.launch(post.content)
 
 //                with (binding.textInputEt){
