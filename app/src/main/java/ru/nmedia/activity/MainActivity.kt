@@ -2,20 +2,13 @@ package ru.nmedia.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.Toast
-import androidx.activity.result.launch
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.snackbar.Snackbar
-import ru.nmedia.R
-import ru.nmedia.databinding.ActivityMainBinding
 import ru.nmedia.adapter.OnInteractionListener
 import ru.nmedia.adapter.PostsAdapter
-import ru.nmedia.databinding.ActivityNewEditPostBinding
+import ru.nmedia.databinding.ActivityMainBinding
 import ru.nmedia.dto.Post
 import ru.nmedia.repository.PostViewModel
-import ru.nmedia.util.AndroidUtils
 import java.text.DecimalFormat
 
 

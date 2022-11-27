@@ -2,9 +2,8 @@ package ru.nmedia.activity
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import ru.nmedia.databinding.ActivityNewEditPostBinding
 import ru.nmedia.util.AndroidUtils
 
@@ -16,7 +15,7 @@ class NewEditPostActivity : AppCompatActivity() {
 
         with(binding.edit) {
             val str = intent.getStringExtra(Intent.EXTRA_TEXT)
-            if (!str.isNullOrBlank()){
+            if (!str.isNullOrBlank()) {
                 setText(str)
             }
             requestFocus()
