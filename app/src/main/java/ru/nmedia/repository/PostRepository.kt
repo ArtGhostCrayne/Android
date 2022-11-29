@@ -10,4 +10,5 @@ interface PostRepository {
     fun removeById(id: Long)
     fun edit(post: Post)
     fun add(text: String)
+
 }

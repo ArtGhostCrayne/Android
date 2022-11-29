@@ -14,6 +14,7 @@
         android:layout_height="0dp"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp"
@@ -30,104 +31,102 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/i_add_24" />
 
-<!--    <androidx.constraintlayout.widget.Barrier-->
-<!--        android:id="@+id/barrier"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:barrierDirection="top"-->
-<!--        app:constraint_referenced_ids="textInputEt,postApplyIb,layoutEditInfoCl" />-->
+    <!--    <androidx.constraintlayout.widget.Barrier-->
+    <!--        android:id="@+id/barrier"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        app:barrierDirection="top"-->
+    <!--        app:constraint_referenced_ids="textInputEt,postApplyIb,layoutEditInfoCl" />-->
 
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:id="@+id/layoutEditInfoCl"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="50dp"-->
-<!--        android:padding="5dp"-->
-<!--        android:visibility="visible"-->
-<!--        app:layout_constraintBottom_toTopOf="@id/textInputEt">-->
+    <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--        android:id="@+id/layoutEditInfoCl"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="50dp"-->
+    <!--        android:padding="5dp"-->
+    <!--        android:visibility="visible"-->
+    <!--        app:layout_constraintBottom_toTopOf="@id/textInputEt">-->
 
-<!--        <ImageView-->
-<!--            android:id="@+id/editIv"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
+    <!--        <ImageView-->
+    <!--            android:id="@+id/editIv"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
 
-<!--            android:src="@drawable/ic_edit_24"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            tools:ignore="MissingConstraints">-->
+    <!--            android:src="@drawable/ic_edit_24"-->
+    <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--            app:layout_constraintTop_toTopOf="parent"-->
+    <!--            tools:ignore="MissingConstraints">-->
 
-<!--        </ImageView>-->
-
-
-<!--        <TextView-->
-<!--            android:id="@+id/infoTv"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="16dp"-->
-<!--            android:ellipsize="end"-->
-<!--            android:singleLine="true"-->
-<!--            android:text="@string/edit_post_text"-->
-<!--            android:textColor="@color/design_default_color_secondary_variant"-->
-<!--            android:textStyle="bold"-->
-<!--            app:layout_constraintEnd_toStartOf="@+id/editCancelIb"-->
-<!--            app:layout_constraintStart_toEndOf="@id/editIv"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintVertical_chainStyle="packed" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/editedPostTitleTv"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="16dp"-->
-<!--            android:ellipsize="end"-->
-<!--            android:singleLine="true"-->
-<!--            android:text="Нетология"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toStartOf="@id/editCancelIb"-->
-<!--            app:layout_constraintStart_toEndOf="@id/editIv"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/infoTv" />-->
-
-<!--        <ImageButton-->
-<!--            android:id="@+id/editCancelIb"-->
-<!--            android:layout_width="42dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginEnd="4dp"-->
-<!--            android:background="@android:color/transparent"-->
-
-<!--            android:contentDescription="@string/Apply"-->
-<!--            android:src="@drawable/ic_cancel"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintVertical_bias="0.538"-->
-<!--            tools:ignore="MissingConstraints" />-->
-
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/textInputEt"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:hint="@string/hint_text_input"-->
-<!--        android:importantForAutofill="no"-->
-<!--        android:inputType="text"-->
-<!--        android:padding="16dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toStartOf="@id/postApplyIb"-->
-<!--        app:layout_constraintStart_toStartOf="parent" />-->
-
-<!--    <ImageButton-->
-<!--        android:id="@+id/postApplyIb"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="@android:color/transparent"-->
-<!--        android:contentDescription="@string/Apply"-->
-<!--        android:padding="16dp"-->
-<!--        android:src="@drawable/ic_post_apply"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--         />-->
+    <!--        </ImageView>-->
 
 
+    <!--        <TextView-->
+    <!--            android:id="@+id/infoTv"-->
+    <!--            android:layout_width="0dp"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginStart="16dp"-->
+    <!--            android:ellipsize="end"-->
+    <!--            android:singleLine="true"-->
+    <!--            android:text="@string/edit_post_text"-->
+    <!--            android:textColor="@color/design_default_color_secondary_variant"-->
+    <!--            android:textStyle="bold"-->
+    <!--            app:layout_constraintEnd_toStartOf="@+id/editCancelIb"-->
+    <!--            app:layout_constraintStart_toEndOf="@id/editIv"-->
+    <!--            app:layout_constraintTop_toTopOf="parent"-->
+    <!--            app:layout_constraintVertical_chainStyle="packed" />-->
+
+    <!--        <TextView-->
+    <!--            android:id="@+id/editedPostTitleTv"-->
+    <!--            android:layout_width="0dp"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginStart="16dp"-->
+    <!--            android:ellipsize="end"-->
+    <!--            android:singleLine="true"-->
+    <!--            android:text="Нетология"-->
+    <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--            app:layout_constraintEnd_toStartOf="@id/editCancelIb"-->
+    <!--            app:layout_constraintStart_toEndOf="@id/editIv"-->
+    <!--            app:layout_constraintTop_toBottomOf="@+id/infoTv" />-->
+
+    <!--        <ImageButton-->
+    <!--            android:id="@+id/editCancelIb"-->
+    <!--            android:layout_width="42dp"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginEnd="4dp"-->
+    <!--            android:background="@android:color/transparent"-->
+
+    <!--            android:contentDescription="@string/Apply"-->
+    <!--            android:src="@drawable/ic_cancel"-->
+    <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintTop_toTopOf="parent"-->
+    <!--            app:layout_constraintVertical_bias="0.538"-->
+    <!--            tools:ignore="MissingConstraints" />-->
+
+    <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--    <EditText-->
+    <!--        android:id="@+id/textInputEt"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:hint="@string/hint_text_input"-->
+    <!--        android:importantForAutofill="no"-->
+    <!--        android:inputType="text"-->
+    <!--        android:padding="16dp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toStartOf="@id/postApplyIb"-->
+    <!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+    <!--    <ImageButton-->
+    <!--        android:id="@+id/postApplyIb"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:background="@android:color/transparent"-->
+    <!--        android:contentDescription="@string/Apply"-->
+    <!--        android:padding="16dp"-->
+    <!--        android:src="@drawable/ic_post_apply"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--         />-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
