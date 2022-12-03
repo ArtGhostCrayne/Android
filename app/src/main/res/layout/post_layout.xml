@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -255,5 +257,7 @@
         app:constraint_referenced_ids="likesMb,commentsIv,repostIv,viewsIv,viewsTv"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="80dp" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

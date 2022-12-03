@@ -11,20 +11,22 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.nmedia.R
-import ru.nmedia.databinding.PostLayoutBinding
 import ru.nmedia.activity.countToString
+import ru.nmedia.databinding.PostLayoutBinding
 import ru.nmedia.dto.Post
 
 //typealias OnLikeListener = (post: Post) -> Unit
 //typealias OnRepostListener = (post: Post) -> Unit
 //typealias OnRemoveListener= (post: Post) -> Unit
 
-interface OnInteractionListener{
+interface OnInteractionListener {
     fun onLike(post: Post) {}
     fun onRepost(post: Post) {}
     fun onRemove(post: Post) {}
     fun onEdit(post: Post) {}
+    fun onSelect(post: Post) {}
 }
+
 
 class PostViewHolder(
     private val binding: PostLayoutBinding,
@@ -45,7 +47,7 @@ class PostViewHolder(
             likesMb.text = countToString(post.likeCount)
             likesMb.isChecked = post.liked
 
-            groupVideo.isVisible= post.video.isNotBlank()
+            groupVideo.isVisible = post.video.isNotBlank()
 
 
             likesMb.setOnClickListener {
@@ -59,22 +61,28 @@ class PostViewHolder(
 
             videoPlayFab.setOnClickListener {
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.video))
-                startActivity(it.context, intent,null)
+                startActivity(it.context, intent, null)
             }
 
             videoIv.setOnClickListener {
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.video))
-                startActivity(it.context, intent,null)
+                startActivity(it.context, intent, null)
+            }
+
+            titleTv.setOnClickListener {
+                onInteractionListener.onSelect(post)
+            }
+
+            postTextTv.setOnClickListener {
+                onInteractionListener.onSelect(post)
             }
 
 
-
-            postMenuIv.setOnClickListener{
-                PopupMenu(it.context,it).apply {
+            postMenuIv.setOnClickListener {
+                PopupMenu(it.context, it).apply {
                     inflate(R.menu.post_popup_menu)
-                    setOnMenuItemClickListener {
-                        item ->
-                        when (item.itemId){
+                    setOnMenuItemClickListener { item ->
+                        when (item.itemId) {
                             R.id.removePostPm -> {
                                 onInteractionListener.onRemove(post)
                                 true

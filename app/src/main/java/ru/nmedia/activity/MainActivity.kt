@@ -66,18 +66,18 @@ class MainActivity : AppCompatActivity() {
     //    lateinit var PostLayoutBinding: ActivityMainBinding
     private val viewModel: PostViewModel by viewModels()
 
-    val newPostLauncher = registerForActivityResult(PostResultContract()) { result ->
-        result ?: return@registerForActivityResult
-//            Snackbar.make(binding.root, "", Snackbar.LENGTH_LONG).setAction(result) {}.show()
-        with(viewModel) {
-            if (edited.value?.id == 0L) {
-                add(result)
-            } else {
-                edit(viewModel.edited.value!!.copy(content = result))
-            }
-        }
-
-    }
+//    val newPostLauncher = registerForActivityResult(PostResultContract()) { result ->
+//        result ?: return@registerForActivityResult
+////            Snackbar.make(binding.root, "", Snackbar.LENGTH_LONG).setAction(result) {}.show()
+//        with(viewModel) {
+//            if (edited.value?.id == 0L) {
+//                add(result)
+//            } else {
+//                edit(viewModel.edited.value!!.copy(content = result))
+//            }
+//        }
+//
+//    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -89,9 +89,10 @@ class MainActivity : AppCompatActivity() {
 
         subscribe()
 
-        binding.fab.setOnClickListener {
-            newPostLauncher.launch("")
-        }
+//        binding.fab.setOnClickListener {
+//            newPostLauncher.launch("")
+//        }
+
 
 //        binding.editCancelIb.setOnClickListener {
 //            binding.layoutEditInfoCl.visibility = View.GONE
@@ -141,20 +142,21 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        viewModel.edited.observe(this) { post ->
-            if (post.id != 0L) {
-                newPostLauncher.launch(post.content)
 
-//                with (binding.textInputEt){
-//                    requestFocus()
-//                    setText(post.content)
-//                }
-//                binding.layoutEditInfoCl.visibility = View.VISIBLE
-//                binding.editedPostTitleTv.text = post.title
-//                AndroidUtils.showKeyboard(binding.textInputEt)
-            }
-//            else binding.layoutEditInfoCl.visibility = View.GONE
-        }
+//        viewModel.edited.observe(this) { post ->
+//            if (post.id != 0L) {
+//                newPostLauncher.launch(post.content)
+//
+////                with (binding.textInputEt){
+////                    requestFocus()
+////                    setText(post.content)
+////                }
+////                binding.layoutEditInfoCl.visibility = View.VISIBLE
+////                binding.editedPostTitleTv.text = post.title
+////                AndroidUtils.showKeyboard(binding.textInputEt)
+//            }
+////            else binding.layoutEditInfoCl.visibility = View.GONE
+//        }
 
     }
 }

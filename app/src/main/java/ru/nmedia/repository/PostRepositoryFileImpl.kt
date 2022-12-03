@@ -104,7 +104,7 @@ class PostRepositoryFileImpl(private val context: Context) : PostRepository {
     }
 
     override fun add(text: String) {
-        posts = posts + Post(++lastId, "Заголовок", "Только что", content = text)
+        posts =   listOf(Post(++lastId, "Заголовок", "Только что", content = text)) + posts
         data.value = posts
         sync()
     }

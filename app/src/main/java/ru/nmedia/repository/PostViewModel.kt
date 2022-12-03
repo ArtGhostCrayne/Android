@@ -3,7 +3,6 @@ package ru.nmedia.repository
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import ru.nmedia.dto.Post
 
 private val empty = Post(
@@ -19,6 +18,7 @@ class PostViewModel(app: Application) : AndroidViewModel(app) {
     val data = repository.getAll()
     val edited = MutableLiveData(empty)
     fun likeById(id: Long) = repository.likeById(id)
+
     fun repostById(id: Long) = repository.repostById(id)
     fun removeById(id: Long) = repository.removeById(id)
 
@@ -27,9 +27,9 @@ class PostViewModel(app: Application) : AndroidViewModel(app) {
         edited.value = empty
     }
 
-    fun editCancel() {
-        edited.value = empty
-    }
+//    fun editCancel() {
+//        edited.value = empty
+//    }
 
     fun add(text: String) = repository.add(text)
 
