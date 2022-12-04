@@ -88,6 +88,7 @@ class PostViewFragment : Fragment() {
             false
         )
 
+
         viewModel.data.observe(viewLifecycleOwner) { posts ->
             val post = posts.find { it.id == postId } ?: return@observe
 

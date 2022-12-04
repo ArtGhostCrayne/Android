@@ -49,8 +49,8 @@ class NewPostFragment : Fragment() {
 
         binding.editContentEt.setText(content)
 
-        viewModel.edited.observe(viewLifecycleOwner) {//
-            binding.editContentEt.setText(it.content)
+        viewModel.edited.observe(viewLifecycleOwner) {
+            if (it.id != 0L) binding.editContentEt.setText(it.content)
         }
 
 
