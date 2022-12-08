@@ -69,6 +69,12 @@ class FeedFragment : Fragment() {
         }
     }
 
+    companion object {
+
+        const val SAVE_CONTENT = "SAVE_CONTENT"
+    }
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -81,6 +87,15 @@ class FeedFragment : Fragment() {
 
         binding.fab.setOnClickListener {
             findNavController().navigate(R.id.action_feedFragment_to_newPostFragment)
+
+//            viewModel.add("test")
+        //        INSERT INTO ${PostColumns.TABLE} VALUES
+        //        ${PostColumns.COLUMN_TITLE} = "1231313",
+        //        ${PostColumns.COLUMN_CONTENT} = "content",
+        //        ${PostColumns.COLUMN_DATE} = "now"
+
+
+
 //            findNavController().navigate(
 //                R.id.action_feedFragment_to_postViewFragment, bundleOf(
 //                    PostViewFragment.ARG_ID_POST to "3"

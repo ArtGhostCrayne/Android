@@ -3,6 +3,7 @@ package ru.nmedia.repository
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import ru.nmedia.db.AppDb
 import ru.nmedia.dto.Post
 
 private val empty = Post(
@@ -14,7 +15,8 @@ private val empty = Post(
 
 class PostViewModel(app: Application) : AndroidViewModel(app) {
     //    private val repository: PostRepository = PostRepositoryInMemoryImpl()
-    private val repository: PostRepository = PostRepositoryFileImpl(app)
+//    private val repository: PostRepository = PostRepositoryFileImpl(app)
+    private val repository: PostRepository = PostRepositorySQLiteImpl(AppDb.getInstance(app).postDao)
     val data = repository.getAll()
     val edited = MutableLiveData(empty)
     fun likeById(id: Long) = repository.likeById(id)

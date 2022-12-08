@@ -1,5 +1,6 @@
 package ru.nmedia.activity
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -7,11 +8,18 @@ import android.os.Bundle
 import androidx.core.os.bundleOf
 import ru.nmedia.R
 import ru.nmedia.activity.NewPostFragment.Companion.ARG_CONTENT
+import ru.nmedia.db.SharedPreference
 
 class AppActivity : AppCompatActivity() {
+
+    lateinit var saveContent: String
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_app)
+
 
         intent?.let {
             if (it.action != Intent.ACTION_SEND) {
@@ -29,4 +37,6 @@ class AppActivity : AppCompatActivity() {
         }
 
     }
+
+
 }
