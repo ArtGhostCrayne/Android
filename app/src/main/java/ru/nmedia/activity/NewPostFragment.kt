@@ -20,6 +20,7 @@ import ru.nmedia.util.AndroidUtils
 class NewPostFragment : Fragment() {
 
     var content: String = ""
+    var idPost = 0L
 
     private val viewModel: PostViewModel by activityViewModels()
 
@@ -51,21 +52,22 @@ class NewPostFragment : Fragment() {
             false
         )
 
-        binding.editContentEt.setText(content)
 
 
-        val preferences= activity?.getSharedPreferences("user_content", 0)
-
-        preferences?.apply{
-            binding.editContentEt.setText(getString("content", null))
-            edit().apply{
-                clear()
-                apply()
+        viewModel.edited.observe(viewLifecycleOwner) {
+            if (it.id != 0L) {
+                idPost = it.id
+                binding.editContentEt.setText(it.content)
             }
         }
 
-        viewModel.edited.observe(viewLifecycleOwner) {
-            if (it.id != 0L) binding.editContentEt.setText(it.content)
+        val preferences = activity?.getSharedPreferences("user_content", 0)
+
+        if (idPost == 0L) {
+            preferences?.apply {
+                binding.editContentEt.setText(getString("content", null))
+                binding.editContentEt.text
+            }
         }
 
 
@@ -83,27 +85,34 @@ class NewPostFragment : Fragment() {
                         edit(viewModel.edited.value!!.copy(content = content))
                     } else {
                         add(content)
+                        preferences?.edit()?.apply {
+                            clear()
+                            apply()
+                        }
                     }
                 }
-
                 findNavController().navigateUp()
             }
 
 
         }
 
-        with(binding.editContentEt){
+        with(binding.editContentEt) {
             requestFocus()
             AndroidUtils.showKeyboard(this)
         }
 
-        val callback = requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner){
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
 
-            val saveContent = binding.editContentEt.text.toString()
+            if (idPost == 0L) {
+                val saveContent = binding.editContentEt.text.toString()
 
-            preferences?.edit()?.apply{
-                putString("content", saveContent)
-                apply()
+                preferences?.edit()?.apply {
+                    putString("content", saveContent)
+                    apply()
+                }
+            }else{
+                viewModel.editedClear()
             }
 
             findNavController().navigateUp()
