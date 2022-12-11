@@ -17,7 +17,7 @@ class PostViewModel(app: Application) : AndroidViewModel(app) {
     //    private val repository: PostRepository = PostRepositoryInMemoryImpl()
 //    private val repository: PostRepository = PostRepositoryFileImpl(app)
     private val repository: PostRepository =
-        PostRepositorySQLiteImpl(AppDb.getInstance(app).postDao)
+        PostRepositoryRoomImpl(AppDb.getInstance(app).postDao())
     val data = repository.getAll()
     val edited = MutableLiveData(empty)
     fun likeById(id: Long) = repository.likeById(id)
