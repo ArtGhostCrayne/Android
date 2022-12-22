@@ -1,18 +1,20 @@
 package ru.nmedia.activity
 
-import android.content.Context
+
+import android.Manifest
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.firebase.messaging.FirebaseMessaging
 import ru.nmedia.R
 import ru.nmedia.activity.NewPostFragment.Companion.ARG_CONTENT
-import ru.nmedia.db.SharedPreference
 
 class AppActivity : AppCompatActivity() {
 
@@ -41,7 +43,21 @@ class AppActivity : AppCompatActivity() {
         }
 
         checkGoogleApiAvailability()
+
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            Toast.makeText(this, "Нет разрешения на уведомления", Toast.LENGTH_SHORT).show();
+//            val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+//            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+//            val uri: Uri = Uri.fromParts("package", packageName, null)
+//            intent.data = uri
+//            startActivity(intent)
+        }
     }
+
 
     private fun checkGoogleApiAvailability() {
         with(GoogleApiAvailability.getInstance()) {
@@ -59,7 +75,8 @@ class AppActivity : AppCompatActivity() {
 
         FirebaseMessaging.getInstance().token.addOnSuccessListener {
             println(it)
-          //  fkocB1gSS9uNt1JdCfDXQf:APA91bFOxYSovOVUM1fhYSuj1IfLhehiyVJKly9YUga0_plt1aL0up2avdoEKOVIBntNCbs8CBWvfUCWe8TKjr-gY4RtRdqT3KVjFHyBbPREIllHOxJFooqdA_19E-UV856Q08DYtOrf
+            //  fkocB1gSS9uNt1JdCfDXQf:APA91bFOxYSovOVUM1fhYSuj1IfLhehiyVJKly9YUga0_plt1aL0up2avdoEKOVIBntNCbs8CBWvfUCWe8TKjr-gY4RtRdqT3KVjFHyBbPREIllHOxJFooqdA_19E-UV856Q08DYtOrf
+//            fAR6MGS5RnOEE-MnVveo4E:APA91bG_cNzjstcExxA1l1pjQ3NLVfKAJBEcDnMjCfcOerjhagZk59owWV5eASKGAZbVG6T3Wuk2TKwIsxmD8avhMQaenP11nQxSph9TX3k8nOdfnoLQ1i2zB1XTQDmL4cmzzPIppvUI
         }
     }
 
